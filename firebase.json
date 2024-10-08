@@ -1,12 +1,6 @@
 {
   "hosting": {
-    "public": "dist",
-    "rewrites": [
-      {
-        "source": "**",
-        "destination": "/index.html"
-      }
-    ],
+    "public": "dist/fire-base-crud",
     "ignore": [
       "firebase.json",
       "**/.*",
