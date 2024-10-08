@@ -1,13 +1,14 @@
-
-export const environment= {
-    production:false,
-    firebase : {
-      apiKey: "AIzaSyD_m0C5R2Q_ecrd_SmHijzuBGTSYQU7H5g",
-      authDomain: "student-crud-d708c.firebaseapp.com",
-      projectId: "student-crud-d708c",
-      storageBucket: "student-crud-d708c.appspot.com",
-      messagingSenderId: "785415758313",
-      appId: "1:785415758313:web:9f2a765de31714f9c7ab78"
-    }
-      
+export const environment = {
+  production: false,
+  firebase: {
+    apiKey: 'AIzaSyCgDGHSApowEjPhZeQDCahDocMUCwp6lU4',
+    authDomain: 'mean-auth-cb617.firebaseapp.com',
+    databaseURL:
+      'https://mean-auth-cb617-default-rtdb.asia-southeast1.firebasedatabase.app',
+    projectId: 'mean-auth-cb617',
+    storageBucket: 'mean-auth-cb617.appspot.com',
+    messagingSenderId: '12461046933',
+    appId: '1:12461046933:web:9823beea10fd5141d5af9c',
+    measurementId: 'G-XKTMSN53WV',
+  },
 };
