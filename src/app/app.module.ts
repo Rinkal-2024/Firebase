@@ -12,6 +12,7 @@ import { FormsModule } from '@angular/forms';
 import { ForgetPasswordComponent } from './component/forget-password/forget-password.component';
 import { VerifyEmailComponent } from './component/verify-email/verify-email.component';
 import { environment } from 'src/environments/environment.development';
+import { ConfigService } from './shared/config.service';
 
 @NgModule({
   declarations: [
@@ -26,8 +27,7 @@ import { environment } from 'src/environments/environment.development';
   imports: [
     BrowserModule,
     AppRoutingModule,
-    // AngularFireModule,
-    AngularFireModule.initializeApp(environment.firebase),
+    AngularFireModule,
     FormsModule
   ],
   providers: [],
