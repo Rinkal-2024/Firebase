@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { ConfigService } from './shared/config.service';
 import * as firebase from 'firebase/compat';
+import { AngularFireModule } from '@angular/fire/compat';
 
 @Component({
   selector: 'app-root',
@@ -10,11 +11,8 @@ import * as firebase from 'firebase/compat';
 export class AppComponent {
   constructor(private configService: ConfigService){}
   title = 'fire-base-crud';
-  firebaseConfig : any;
   ngOnInit(): void {
-    //Called after the constructor, initializing input properties, and the first call to ngOnChanges.
-    //Add 'implements OnInit' to the class.
-    this.firebaseConfig = {
+    const firebaseConfig = {
       apiKey: this.configService.getEnv('firebaseApiKey'),
       authDomain: this.configService.getEnv('firebaseAuthDomain'),
       databaseURL: this.configService.getEnv('firebaseDatabaseURL'),
@@ -22,8 +20,8 @@ export class AppComponent {
       storageBucket: this.configService.getEnv('firebaseStorageBucket'),
       messagingSenderId: this.configService.getEnv('firebaseMessagingSenderId'),
       appId: this.configService.getEnv('firebaseAppId'),
-      measurementId: this.configService.getEnv('firebaseMeasurementId'),
+      measurementId: this.configService.getEnv('firebaseMeasurementId')
     };
-    // firebase.initializeApp(this.firebaseConfig);
+    AngularFireModule.initializeApp(firebaseConfig);
   }
 }
