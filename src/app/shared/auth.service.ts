@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { AngularFireAuth } from '@angular/fire/compat/auth';
-import {GoogleAuthProvider,GithubAuthProvider,FacebookAuthProvider} from '@angular/fire/auth'
 import { Router } from '@angular/router';
+import 'firebase/compat/auth';
 
 
 @Injectable({
@@ -80,12 +80,23 @@ export class AuthService {
 
     //signin with google
     signInWithGoogle(){
-      return this.fireauth.signInWithPopup(new GoogleAuthProvider).then(res=>{
+      const provider = new (window as any).firebase.auth.GoogleAuthProvider();
+      return this.fireauth.signInWithPopup(provider).then(res=>{
         this.router.navigate(['/dashboard']);
         localStorage.setItem('token',JSON.stringify(res.user?.uid));
-      }).catch((err: { message: any; }) => {
-      
-      alert(err.message);
+      }).catch((err: { message: any; code?: string }) => {
+        console.error('Google Sign-In Error:', err);
+        let errorMessage = err.message || 'An error occurred during Google sign-in';
+        
+        if (err.code === 'auth/popup-closed-by-user') {
+          errorMessage = 'Sign-in popup was closed. Please try again.';
+        } else if (err.code === 'auth/popup-blocked') {
+          errorMessage = 'Popup was blocked by your browser. Please allow popups for this site.';
+        } else if (err.code === 'auth/unauthorized-domain') {
+          errorMessage = 'This domain is not authorized. Please contact support.';
+        }
+        
+        alert(errorMessage);
     });
     }
 
